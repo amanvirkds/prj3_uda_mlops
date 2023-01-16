@@ -23,13 +23,6 @@ import joblib
 data = pd.read_csv("../data/census.csv")
 data.columns = [col.strip() for col in data.columns]
 
-
-def print_model_metrics(precision, recall, fbeta):
-    print(f"""Model Metrics: 
-            Precision: {round(precision, 2)}, 
-            Recall: {round(recall, 2)}, 
-            fbeta: {round(beta, 2)}""")
-
 # Optional enhancement, use K-fold cross validation instead of a train-test split.
 train, test = train_test_split(data, test_size=0.20)
 
