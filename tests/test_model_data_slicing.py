@@ -13,8 +13,8 @@ each slice.
 import pandas as pd
 import pytest
 import joblib
-from ml.model import inference, compute_model_metrics
-from ml.data import process_data
+from src.ml.model import inference, compute_model_metrics
+from src.ml.data import process_data
 
 
 
@@ -37,7 +37,7 @@ fbeta_threshold = .4
 def data():
     """ funciton to read the data from csv file"""
     
-    df = pd.read_csv("../data/census.csv")
+    df = pd.read_csv("data/census.csv")
     df.columns = [col.strip() for col in df.columns]
     
     return df
@@ -45,17 +45,17 @@ def data():
 @pytest.fixture
 def model():
     """ funciton to read the data from csv file"""
-    return joblib.load('../model/model.pkl')
+    return joblib.load('model/model.pkl')
 
 @pytest.fixture
 def encoder():
     """ funciton to read the data from csv file"""
-    return joblib.load('../model/encoder.pkl')
+    return joblib.load('model/encoder.pkl')
 
 @pytest.fixture
 def lb():
     """ funciton to read the data from csv file"""
-    return joblib.load('../model/lb.pkl')
+    return joblib.load('model/lb.pkl')
     
 # content of test_example.py
 def pytest_generate_tests(metafunc):
@@ -65,7 +65,7 @@ def pytest_generate_tests(metafunc):
 
 
     test_data = []
-    df = pd.read_csv("../data/census.csv")
+    df = pd.read_csv("data/census.csv")
     df.columns = [col.strip() for col in df.columns]
     for cat_feat in cat_features:
         for cat in df[cat_feat].unique():
