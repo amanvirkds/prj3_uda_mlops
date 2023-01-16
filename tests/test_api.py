@@ -13,6 +13,7 @@ def test_get_path():
     
     r = client.get("/")
     assert r.status_code == 200
+    assert r.json()["message"] == "Welcome, to the Salary Classification model"
     
     
 def test_classify_salary_1():
@@ -34,6 +35,7 @@ def test_classify_salary_1():
 
     r = client.post("/classify/", data=json.dumps(data))
     assert r.json()["salary"] == "<=50K"
+    assert r.status_code == 200
 
     
 def test_classify_salary_2():
@@ -55,4 +57,5 @@ def test_classify_salary_2():
 
     r = client.post("/classify/", data=json.dumps(data))
     assert r.json()["salary"] == "<=50K"
+    assert r.status_code == 200
 

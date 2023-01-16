@@ -20,9 +20,7 @@ cat_features = [
 
 @app.get("/")
 async def root():
-    return {"message": 
-            """Welcome, 
-            this model will help to predict the income levels based on demographics and characterstics"""}
+    return {"message": "Welcome, to the Salary Classification model"}
 
 
 from pydantic import BaseModel
@@ -47,7 +45,7 @@ class TaggedItem(BaseModel):
 
 # This allows sending of data (our TaggedItem) via POST to the API.
 @app.post("/classify/")
-def create_item(item: TaggedItem):
+async def create_item(item: TaggedItem):
     
     data = {"age": item.age, 
             "workclass": item.workclass,
