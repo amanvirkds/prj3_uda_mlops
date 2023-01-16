@@ -1,0 +1,4 @@
+outs:
+- md5: b68f9d3fef6a216b01de60b8d2a231ca
+  size: 456
+  path: lb.pkl
