@@ -36,6 +36,8 @@ cat_features = [
     "sex",
     "native-country",
 ]
+for cat_feat in cat_features:
+    data[cat_feat] = data[cat_feat].apply(lambda x: x.strip())
 
 X_train, y_train, encoder, lb = process_data(
     train, 
