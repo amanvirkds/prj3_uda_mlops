@@ -17,10 +17,11 @@ import pandas as pd
 import numpy as np
 from ml.data import process_data
 from ml.model import train_model, inference, compute_model_metrics
+from validate_model_on_slice import model_metrics_on_slicing
 import joblib
 
 # Add code to load in the data.
-data = pd.read_csv("../data/census.csv")
+data = pd.read_csv("data/census.csv")
 data.columns = [col.strip() for col in data.columns]
 
 # Optional enhancement, use K-fold cross validation instead of a train-test split.
@@ -75,6 +76,22 @@ print(f"Percision: {precision}")
 print(f"Recall: {recall}")
 print(f"fbeta: {fbeta}")
 
-joblib.dump(model, '../model/model.pkl')
-joblib.dump(encoder, '../model/encoder.pkl')
-joblib.dump(lb, '../model/lb.pkl')
+
+# Validate model performance on data slices
+
+# Performance on Education Variable
+model_metrics_on_slicing(
+    "education", 
+    data, model, encoder, lb, cat_features
+)
+
+# Performance on Work Class Variable
+model_metrics_on_slicing(
+    "workclass", 
+    data, model, encoder, lb, cat_features
+)
+
+
+joblib.dump(model, 'model/model.pkl')
+joblib.dump(encoder, 'model/encoder.pkl')
+joblib.dump(lb, 'model/lb.pkl')
