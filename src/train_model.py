@@ -58,7 +58,10 @@ X_test, y_test, encoder, lb = process_data(
 )
 
 # Train and save a model.
-model = train_model(X_train, y_train, model_type="cv")
+model = train_model(X_train
+                    , y_train
+                    #, model_type="cv"
+)
 train_preds = inference(model, X_train)
 precision, recall, fbeta = compute_model_metrics(y_train, train_preds)
 
