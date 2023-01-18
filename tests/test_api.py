@@ -17,6 +17,7 @@ def test_get_path():
     
     
 def test_classify_salary_1():
+    """test case 1 for salary prediction"""
     
     data = {"age": 39, 
             "workclass": "State-gov",
@@ -39,6 +40,7 @@ def test_classify_salary_1():
 
     
 def test_classify_salary_2():
+    """test case 2 for salary prediction"""
     
     data = {"age": 37, 
             "workclass": "Private",
@@ -58,4 +60,3 @@ def test_classify_salary_2():
     r = client.post("/classify/", data=json.dumps(data))
     assert r.json()["salary"] == "<=50K"
     assert r.status_code == 200
-

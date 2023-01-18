@@ -25,7 +25,7 @@ data = pd.read_csv("data/census.csv")
 data.columns = [col.strip() for col in data.columns]
 
 # Optional enhancement, use K-fold cross validation instead of a train-test split.
-train, test = train_test_split(data, test_size=0.20)
+train, test = train_test_split(data, test_size=0.30)
 
 cat_features = [
     "workclass",
@@ -58,7 +58,7 @@ X_test, y_test, encoder, lb = process_data(
 )
 
 # Train and save a model.
-model = train_model(X_train, y_train)
+model = train_model(X_train, y_train, model_type="cv")
 train_preds = inference(model, X_train)
 precision, recall, fbeta = compute_model_metrics(y_train, train_preds)
 

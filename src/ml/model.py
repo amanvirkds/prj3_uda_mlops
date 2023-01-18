@@ -10,12 +10,13 @@ Module to perform the model training
 
 from sklearn.metrics import fbeta_score, precision_score, recall_score
 from sklearn.ensemble import RandomForestClassifier
+from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import GridSearchCV
 import pandas as pd
 
 
 # Optional: implement hyperparameter tuning.
-def train_model(X_train, y_train):
+def train_model(X_train, y_train, model_type=None):
     """
     Trains a machine learning model and returns it.
 
@@ -31,25 +32,37 @@ def train_model(X_train, y_train):
         Trained machine learning model.
     """
     
-    param_grid = { 
-        'n_estimators': [100, 200, 500],
-        'max_features': ['auto', 'sqrt'],
-        'max_depth' : [4, 5, 100],
-        'criterion' :['gini', 'entropy']
-    }
     
-    rf_model = RandomForestClassifier(
-            random_state=42)
-    cv_model = GridSearchCV(
-        estimator=rf_model,
-        param_grid=param_grid,
-        cv=5,
-        verbose=False)
-    rf_model.fit(X_train, y_train)
-    #cv_model.fit(X_train, y_train)
-
-    #return cv_model.best_estimator_
-    return rf_model
+    if model_type == "rf":
+        model = RandomForestClassifier(
+                random_state=42)
+        model.fit(X_train, y_train)
+        return model
+    elif model_type == "cv":
+        param_grid = { 
+            'n_estimators': [50, 100, 200, 500, 1000],
+            'max_features': ['auto', 'sqrt'],
+            'max_depth' : [4, 5, 10, 100],
+            'criterion' :['gini', 'entropy']
+        }
+        rf_model = RandomForestClassifier(
+                random_state=42)
+        model = GridSearchCV(
+            estimator=rf_model,
+            param_grid=param_grid,
+            cv=10,
+            verbose=False)
+        model.fit(X_train, y_train)
+        return model.best_estimator_
+    else:
+        model = LogisticRegression(
+            solver='lbfgs',
+            max_iter=3000,
+            verbose=False)
+        model.fit(X_train, y_train)
+        return model
+        
+    
 
 
 def compute_model_metrics(y, preds):

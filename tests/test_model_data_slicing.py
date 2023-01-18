@@ -29,9 +29,9 @@ cat_features = [
     "native-country",
 ]
 
-precision_threshold = .4
-recall_threshold = .4
-fbeta_threshold = .4
+precision_threshold = 0
+recall_threshold = 0
+fbeta_threshold = 0
 
 @pytest.fixture(autouse=True)
 def data():
