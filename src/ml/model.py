@@ -42,7 +42,7 @@ def train_model(X_train, y_train, model_type=None):
         param_grid = { 
             'n_estimators': [50, 100, 200, 500, 1000],
             'max_features': ['auto', 'sqrt'],
-            'max_depth' : [4, 5, 10, 100],
+            'max_depth' : [2, 4, 5, 10, 20, 100],
             'criterion' :['gini', 'entropy']
         }
         rf_model = RandomForestClassifier(
