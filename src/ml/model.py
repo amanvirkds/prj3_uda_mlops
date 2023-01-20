@@ -40,9 +40,9 @@ def train_model(X_train, y_train, model_type=None):
         return model
     elif model_type == "cv":
         param_grid = { 
-            'n_estimators': [50, 100, 200, 500, 1000],
-            'max_features': ['auto', 'sqrt'],
-            'max_depth' : [2, 4, 5, 10, 20, 100],
+            'n_estimators': [50, 100, 200, 500],
+            'max_features': ['sqrt',5, 10, 20],
+            'max_depth' : [2, 4, 5, 10, 20],
             'criterion' :['gini', 'entropy']
         }
         rf_model = RandomForestClassifier(
