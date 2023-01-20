@@ -70,11 +70,6 @@ def test_model_performance(data, model, encoder, lb):
     val_preds = inference(model, X_val)
     precision, recall, fbeta = compute_model_metrics(y_val, val_preds)
     
-    assert precision >= .7, "Model precision metric is less then .9"
-    assert recall >= .2, "Model recall metric is less then .9"
-    assert fbeta >= .2, "Model fbeta metric is less then .9"
-    
-    
-
-
-            
+    assert precision >= .7, "Model precision metric is less then .7"
+    assert recall >= .7, "Model recall metric is less then .7"
+    assert fbeta >= .7, "Model fbeta metric is less then .7"

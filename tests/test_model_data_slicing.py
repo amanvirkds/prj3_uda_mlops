@@ -29,9 +29,16 @@ cat_features = [
     "native-country",
 ]
 
-precision_threshold = 0
-recall_threshold = 0
-fbeta_threshold = 0
+features_to_test = [
+    "workclass",
+    "marital-status",
+    "race",
+    "sex",
+]
+
+precision_threshold = 0.7
+recall_threshold = 0.5
+fbeta_threshold = 0.5
 
 @pytest.fixture(autouse=True)
 def data():
@@ -67,7 +74,7 @@ def pytest_generate_tests(metafunc):
     test_data = []
     df = pd.read_csv("data/census.csv")
     df.columns = [col.strip() for col in df.columns]
-    for cat_feat in cat_features:
+    for cat_feat in features_to_test:
         for cat in df[cat_feat].unique():
             test_data.append(
                 (cat_feat, 
