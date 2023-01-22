@@ -16,7 +16,7 @@ def test_get_path():
     assert r.json()["message"] == "Welcome, to the Salary Classification model"
     
     
-def test_classify_salary_1():
+def test_classify_low_salary():
     """test case 1 for salary prediction"""
     
     data = {"age": 39, 
@@ -39,24 +39,24 @@ def test_classify_salary_1():
     assert r.status_code == 200
 
     
-def test_classify_salary_2():
+def test_classify_high_salary():
     """test case 2 for salary prediction"""
     
-    data = {"age": 37, 
-            "workclass": "Private",
-            "fnlgt": 280464,
-            "education": "Some-college",
-            "educationnum": 10,
+    data = {"age": 58, 
+            "workclass": "Self-emp-inc",
+            "fnlgt": 210563,
+            "education": "HS-grad",
+            "educationnum": 9,
             "maritalstatus": "Married-civ-spouse",
-            "occupation": "Exec-managerial",
-            "relationship": "Husband",
-            "race": "Black",
-            "sex": "Male",
-            "capitalgain": 0,
+            "occupation": "Sales",
+            "relationship": "Wife",
+            "race": "White",
+            "sex": "Female",
+            "capitalgain": 15024,
             "capitalloss": 0,
-            "hoursperweek": 80,
+            "hoursperweek": 35,
             "nativecountry": "United-States"}
 
     r = client.post("/classify/", data=json.dumps(data))
-    assert r.json()["salary"] == "<=50K"
+    assert r.json()["salary"] == ">50K"
     assert r.status_code == 200

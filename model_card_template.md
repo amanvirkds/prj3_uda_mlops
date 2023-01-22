@@ -30,9 +30,15 @@ _Please include the metrics used and your model's performance on those metrics._
 
 Model is evaluated based on below three metrices
 
-- Percision: Current model's performance is >= .9
-- Recall: Current model's performance is >= .9
-- FBeta: Current model's performance is >= .9
+- Percision:
+    - Percision value on training dataset is 0.92
+    - Percision value on test dataset is 0.81
+- Recall:
+    - Recall value on training dataset is .78
+    - Recall value on test dataset is .65
+- FBeta:
+    - FBeta value on training dataset is .85
+    - FBeta value on test dataset is .72
 
 ## Ethical Considerations
 

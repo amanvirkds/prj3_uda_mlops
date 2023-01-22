@@ -1,25 +1,26 @@
 import requests
 import json
 
-
-data = {"age": 39, 
-        "workclass": "State-gov",
-        "fnlgt": 77516,
-        "education": "Bachelors",
-        "educationnum": 13,
+data = {"age": 31, 
+        "workclass": "Private",
+        "fnlgt": 45781,
+        "education": "Masters",
+        "educationnum": 14,
         "maritalstatus": "Never-married",
-        "occupation": "Adm-clerical",
+        "occupation": "Prof-specialty",
         "relationship": "Not-in-family",
         "race": "White",
-        "sex": "Male",
-        "capitalgain": 2174,
+        "sex": "Female",
+        "capitalgain": 14084,
         "capitalloss": 0,
-        "hoursperweek": 40,
+        "hoursperweek": 50,
         "nativecountry": "United-States"}
 
 r = requests.post(
-    "http://127.0.0.1:8000/classify/",
-    data=json.dumps(data))
+    "https://salary-prediction.herokuapp.com/classify/",
+    data=json.dumps(data)
+)
 
-
-print(r.json()["salary"] )
+pred_val = r.json()["salary"]
+print(f"Status code returned by API request is {r.status_code}")
+print(f"Predicted value from API is {pred_val}")

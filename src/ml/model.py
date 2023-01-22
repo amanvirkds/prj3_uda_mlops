@@ -16,7 +16,7 @@ import pandas as pd
 
 
 # Optional: implement hyperparameter tuning.
-def train_model(X_train, y_train, model_type=None):
+def model_fit(X_train, y_train, model_type=None):
     """
     Trains a machine learning model and returns it.
 
@@ -41,8 +41,8 @@ def train_model(X_train, y_train, model_type=None):
     elif model_type == "cv":
         param_grid = { 
             'n_estimators': [50, 100, 200, 500],
-            'max_features': ['sqrt',5, 10, 20],
-            'max_depth' : [2, 4, 5, 10, 20],
+            'max_features': ['sqrt', 'log2', 2, 5, 10, 20],
+            'max_depth' : [2, 4, 5, 6, 7, 9, 11, 20],
             'criterion' :['gini', 'entropy']
         }
         rf_model = RandomForestClassifier(

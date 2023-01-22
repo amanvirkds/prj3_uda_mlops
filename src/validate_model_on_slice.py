@@ -15,7 +15,7 @@ from ml.model import inference, compute_model_metrics
 from ml.data import process_data
 
 def model_metrics_on_slicing(
-        feature, data, model, encoder, lb, cat_features):
+        feature, data, model, encoder=None, lb=None, cat_features=None):
     """function will perform the model validation on each data slice"""
     
     model_results_list = []
