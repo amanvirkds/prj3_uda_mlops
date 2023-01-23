@@ -58,15 +58,15 @@ class TaggedItem(BaseModel):
                 "fnlgt": 188386,
                 "education": "Doctorate",
                 "education-num": 16,
-                "marital-status": "Married-civ-spouse",
+                "maritalstatus": "Married-civ-spouse",
                 "occupation": "Exec-managerial",
                 "relationship": "Husband",
                 "race": "White",
                 "sex": "Male",
-                "capital-gain": 15024,
-                "capital-loss": 0,
-                "hours-per-week": 80,
-                "native-country": "United-States"
+                "capitalgain": 15024,
+                "capitalloss": 0,
+                "hoursperweek": 80,
+                "nativecountry": "United-States"
             }
         }
         
