@@ -57,7 +57,7 @@ class TaggedItem(BaseModel):
                 "workclass": "Private",
                 "fnlgt": 188386,
                 "education": "Doctorate",
-                "education-num": 16,
+                "educationnum": 16,
                 "maritalstatus": "Married-civ-spouse",
                 "occupation": "Exec-managerial",
                 "relationship": "Husband",
