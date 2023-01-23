@@ -50,6 +50,26 @@ class TaggedItem(BaseModel):
     hoursperweek: int
     nativecountry: str
         
+    class Config:
+        schema_extra = {
+            "example": {
+                "age": 46, 
+                "workclass": "Private",
+                "fnlgt": 188386,
+                "education": "Doctorate",
+                "education-num": 16,
+                "marital-status": "Married-civ-spouse",
+                "occupation": "Exec-managerial",
+                "relationship": "Husband",
+                "race": "White",
+                "sex": "Male",
+                "capital-gain": 15024,
+                "capital-loss": 0,
+                "hours-per-week": 80,
+                "native-country": "United-States"
+            }
+        }
+        
 
 # This allows sending of data (our TaggedItem) via POST to the API.
 @app.post("/classify/")
