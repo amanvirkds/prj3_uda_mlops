@@ -28,7 +28,7 @@ cat_features = [
 
 @app.get("/")
 async def root():
-    return {"message": "Welcome, to the Salary Classification model V1"}
+    return {"message": "Welcome, to the Salary Classification model V2"}
 
 
 from pydantic import BaseModel
